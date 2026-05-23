@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+   x:Class="EventHubApp.Views.EventsPage"
+   xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+   xmlns:model="clr-namespace:EventHubApp.Models"
+   Title="Events"
+   BackgroundColor="White">
+
+    <Grid Padding="15"
+         RowDefinitions="Auto,Auto,*">
+
+        <VerticalStackLayout Grid.Row="0" Spacing="8">
+
+            <Label Text="{Binding WelcomeMessage}"
+                  FontSize="18"
+                  FontAttributes="Bold"
+                  TextColor="Black" />
+
+            <SearchBar Placeholder="Search events"
+                      Text="{Binding SearchText}"
+                      HeightRequest="45"
+                      TextColor="Black"
+                      PlaceholderColor="Gray"
+                      BackgroundColor="#F2F2F2" />
+
+            <HorizontalStackLayout Spacing="8">
+
+                <Button Text="Filters"
+                       Command="{Binding ToggleFiltersCommand}" />
+
+                <Button Text="Clear"
+                       Command="{Binding ClearFiltersCommand}" />
+
+                <Button Text="Add"
+                       Command="{Binding GoToAddEventCommand}"
+                       IsVisible="{Binding IsPromoter}" />
+
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+
+        <Frame Grid.Row="1"
+              IsVisible="{Binding ShowFilters}"
+              Padding="10"
+              Margin="0,10,0,10"
+              BorderColor="LightGray"
+              BackgroundColor="#F7F7F7"
+              CornerRadius="10">
+
+            <VerticalStackLayout Spacing="8">
+
+                <Label Text="Filter by Category"
+                      FontAttributes="Bold"
+                      TextColor="Black" />
+
+                <Picker Title="Select category"
+                       ItemsSource="{Binding Categories}"
+                       SelectedItem="{Binding SelectedCategory}"
+                       TextColor="Black"
+                       TitleColor="Gray"
+                       BackgroundColor="White" />
+
+                <HorizontalStackLayout Spacing="10">
+
+                    <CheckBox IsChecked="{Binding UseDateFilter}"
+                             Color="Black" />
+
+                    <Label Text="Filter by date"
+                          VerticalOptions="Center"
+                          TextColor="Black" />
+
+                </HorizontalStackLayout>
+
+                <DatePicker Date="{Binding SelectedDate}"
+                           IsEnabled="{Binding UseDateFilter}"
+                           TextColor="Black"
+                           BackgroundColor="White" />
+
+            </VerticalStackLayout>
+
+        </Frame>
+
+        <CollectionView Grid.Row="2"
+                       ItemsSource="{Binding Events}"
+                       SelectionMode="None">
+
+            <CollectionView.EmptyView>
+                <Label Text="No events found."
+                      FontSize="18"
+                      TextColor="Gray"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center" />
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:EventItem">
+                    <Frame Margin="0,5"
+                          Padding="12"
+                          BorderColor="LightGray"
+                          BackgroundColor="#F5F5F5"
+                          CornerRadius="10">
+
+                        <VerticalStackLayout Spacing="8">
+
+                            <Label Text="Event Name:"
+                              FontAttributes="Bold"
+                              TextColor="Black" />
+                            <Label Text="{Binding Name}"
+                              FontSize="18"
+                              TextColor="Black" />
+
+                            <Label Text="Categories:"
+                              FontAttributes="Bold"
+                              TextColor="Black" />
+                            <Label Text="{Binding Category}"
+                              TextColor="Black" />
+
+                            <Label Text="Venue:"
+                              FontAttributes="Bold"
+                              TextColor="Black" />
+                            <Label Text="{Binding Venue}"
+                              TextColor="Black" />
+
+                            <Label Text="Date:"
+                              FontAttributes="Bold"
+                              TextColor="Black" />
+                            <Label Text="{Binding Date, StringFormat='{0:dd MMM yyyy}'}"
+                                TextColor="Black" />
+
+                            <Label Text="Ticket Cost:"
+                              FontAttributes="Bold"
+                              TextColor="Black" />
+                            <Label Text="{Binding TicketCost, StringFormat='JMD {0:F2}'}"
+                                TextColor="Black" />
+
+                            <Button Text="View Details"
+                               Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ViewDetailsCommand}"
+                               CommandParameter="{Binding .}" />
+
+                        </VerticalStackLayout>
+
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

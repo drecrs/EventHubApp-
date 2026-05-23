@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EventHubApp.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Login"
+    Shell.FlyoutBehavior =" Disabled">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="15">
+            <Frame BackgroundColor="#1B1F3B"
+                   Padding="0"
+                   CornerRadius="30"
+                   HorizontalOptions="Center">
+                <Image Source="eventhub_logo.svg"
+                      HeightRequest="256"
+                      WidthRequest="200"
+                      HorizontalOptions="Center"
+                      Aspect="AspectFit" />
+            </Frame>
+
+            <Label Text="Login to continue"
+                   FontSize="18"
+                   HorizontalOptions="Center" />
+            
+            <Entry Placeholder="Email"
+                   Keyboard="Email"
+                   Text="{Binding Email}" />
+
+            <Entry Placeholder="Password"
+                   IsPassword="True"
+                   Text="{Binding Password}" />
+
+            <Button Text="Login"
+                    Command="{Binding LoginCommand}" />
+
+            <Button Text="Create Account"
+                    Command="{Binding GoToRegisterCommand}" />
+
+            <Label Text="Forgot Password?"
+                   FontSize="14"
+                   TextColor="Grey"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

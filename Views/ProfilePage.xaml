@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+   x:Class="EventHubApp.Views.ProfilePage"
+   xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+   Title="Edit Profile"
+   BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="12">
+
+            <Label Text="Edit Profile"
+                  FontSize="26"
+                  FontAttributes="Bold"
+                  TextColor="Black"
+                  HorizontalOptions="Center" />
+
+            <Entry Placeholder="Name"
+                  Text="{Binding Name}"
+                  TextColor="Black" />
+
+            <Entry Placeholder="Email"
+                  Text="{Binding Email}"
+                  IsReadOnly="True"
+                  TextColor="Black" />
+
+            <Entry Placeholder="Password"
+                  Text="{Binding Password}"
+                  IsPassword="True"
+                  TextColor="Black" />
+
+            <Entry Placeholder="Parish"
+                  Text="{Binding Parish}"
+                  TextColor="Black" />
+
+            <Entry Placeholder="Country"
+                  Text="{Binding Country}"
+                  TextColor="Black" />
+
+            <Picker Title="User Type"
+                   ItemsSource="{Binding UserTypes}"
+                   SelectedItem="{Binding UserType}"
+                   TextColor="Black"
+                   TitleColor="Gray" />
+
+            <Button Text="Save Profile"
+                   Command="{Binding SaveProfileCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

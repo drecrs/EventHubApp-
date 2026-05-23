@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+   x:Class="EventHubApp.AppShell"
+   xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+   xmlns:views="clr-namespace:EventHubApp.Views"
+   xmlns:models="clr-namespace:EventHubApp.Models"
+   FlyoutBehavior="Flyout">
+
+    <Shell.FlyoutContent>
+        <VerticalStackLayout Padding="25"
+                            Spacing="15"
+                            BackgroundColor="White">
+
+            <Label Text="EventHub"
+                  FontSize="26"
+                  FontAttributes="Bold"
+                  TextColor="Black"
+                  Margin="0,20,0,20" />
+
+            <Label Text="{Binding User.Name}"
+                   FontSize="20"
+                   TextColor="Black" />
+            
+            <Button Text="Edit Profile"
+                   BackgroundColor="#EEEEEE"
+                   TextColor="Black"
+                   Clicked="OnProfileClicked" />
+
+            <Button Text="Logout"
+                   BackgroundColor="DarkRed"
+                   TextColor="White"
+                   Clicked="OnLogoutClicked" />
+
+        </VerticalStackLayout>
+    </Shell.FlyoutContent>
+
+    <ShellContent
+       Route="login"
+       Title="Login"
+       ContentTemplate="{DataTemplate views:LoginPage}" />
+
+    <ShellContent
+       Route="events"
+       Title="Events"
+       ContentTemplate="{DataTemplate views:EventsPage}" />
+
+    <ShellContent
+       Route="profile"
+       Title="Edit Profile"
+       ContentTemplate="{DataTemplate views:ProfilePage}" />
+
+</Shell>

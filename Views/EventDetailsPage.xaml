@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+   x:Class="EventHubApp.Views.EventDetailsPage"
+   xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+   Title="Event Details"
+   BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <Frame Padding="15"
+                  CornerRadius="12"
+                  BorderColor="LightGray"
+                  BackgroundColor="#F5F5F5">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="Event Name:"
+                          FontAttributes="Bold"
+                          TextColor="Black" />
+                    <Label Text="{Binding EventItem.Name}"
+                          FontSize="22"
+                          TextColor="Black" />
+
+                    <Label Text="Categories:"
+                          FontAttributes="Bold"
+                          TextColor="Black" />
+                    <Label Text="{Binding EventItem.Category}"
+                          TextColor="Black" />
+
+                    <Label Text="Venue:"
+                          FontAttributes="Bold"
+                          TextColor="Black" />
+                    <Label Text="{Binding EventItem.Venue}"
+                          TextColor="Black" />
+
+                    <Label Text="Date:"
+                          FontAttributes="Bold"
+                          TextColor="Black" />
+                    <Label Text="{Binding EventItem.Date, StringFormat='{0:dd MMM yyyy}'}"
+                          TextColor="Black" />
+
+                    <Label Text="Ticket Cost:"
+                          FontAttributes="Bold"
+                          TextColor="Black" />
+                    <Label Text="{Binding EventItem.TicketCost, StringFormat='JMD {0:F2}'}"
+                          TextColor="Black" />
+
+                    <Label Text="Sponsors:"
+                          FontAttributes="Bold"
+                          TextColor="Black" />
+                    <Label Text="{Binding EventItem.Sponsors}"
+                          TextColor="Black" />
+
+                    <Label Text="Description:"
+                          FontAttributes="Bold"
+                          TextColor="Black" />
+                    <Label Text="{Binding EventItem.Description}"
+                          TextColor="Black"
+                          LineBreakMode="WordWrap" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Padding="15"
+                  CornerRadius="12"
+                  BorderColor="LightGray"
+                  BackgroundColor="White">
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="Event Flyer"
+                          FontSize="20"
+                          FontAttributes="Bold"
+                          TextColor="Black" />
+
+                    <Image Source="{Binding FlyerImageSource}"
+                          HeightRequest="350"
+                          Aspect="AspectFit"
+                          BackgroundColor="#EEEEEE"
+                          IsVisible="{Binding HasFlyerImage}" />
+
+                    <Label Text="{Binding FlyerMessage}"
+                          TextColor="Gray"
+                          IsVisible="{Binding HasFlyerMessage}" />
+
+                    <Button Text="View Flyer"
+                           Command="{Binding OpenFlyerCommand}"
+                           IsVisible="{Binding HasFlyer}" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Get Directions on Google Maps"
+                   Command="{Binding OpenMapCommand}" />
+
+            <Button Text="Edit Event"
+                   Command="{Binding EditEventCommand}"
+                   IsVisible="{Binding IsPromoter}" />
+
+            <Button Text="Delete Event"
+                   Command="{Binding DeleteEventCommand}"
+                   IsVisible="{Binding IsPromoter}"
+                   BackgroundColor="DarkRed"
+                   TextColor="White" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

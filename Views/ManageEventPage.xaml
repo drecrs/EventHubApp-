@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+   x:Class="EventHubApp.Views.ManageEventPage"
+   xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+   xmlns:model="clr-namespace:EventHubApp.Models"
+   Title="Add Event">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="12">
+
+            <Label Text="{Binding PageTitle}"
+              FontSize="26"
+              FontAttributes="Bold"
+              HorizontalOptions="Center" />
+
+            <Entry Placeholder="Event Name"
+                Text="{Binding Name}" />
+
+            <DatePicker Date="{Binding Date}" />
+
+            <Entry Placeholder="Venue"
+                  Text="{Binding Venue}" />
+
+            <Entry Placeholder="Ticket Cost"
+                  Keyboard="Numeric"
+                  Text="{Binding TicketCost}" />
+
+            <Entry Placeholder="Sponsors"
+                  Text="{Binding Sponsors}" />
+
+            <Label Text="Select Event Categories"
+                   FontAttributes="Bold"
+                   TextColor="Grey" />
+
+            <HorizontalStackLayout Spacing="10">
+                <CheckBox IsChecked="{Binding IsSocaSelected}" />
+                <Label Text="Soca"
+                       VerticalOptions="Center"
+                       TextColor="Grey" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <CheckBox IsChecked="{Binding IsDancehallSelected}" />
+                <Label Text="Dancehall"
+                  VerticalOptions="Center"
+                  TextColor="Grey" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <CheckBox IsChecked="{Binding IsCorporateSelected}" />
+                <Label Text="Corporate"
+                  VerticalOptions="Center"
+                  TextColor="Grey" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <CheckBox IsChecked="{Binding IsClubbingSelected}" />
+                <Label Text="Clubbing"
+                  VerticalOptions="Center"
+                  TextColor="Grey" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <CheckBox IsChecked="{Binding IsSportsSelected}" />
+                <Label Text="Sports"
+                     VerticalOptions="Center"
+                     TextColor="grey" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <CheckBox IsChecked="{Binding IsFitnessSelected}" />
+                <Label Text="Fitness"
+                  VerticalOptions="Center"
+                  TextColor="Grey" />
+            </HorizontalStackLayout>
+
+            <Editor Placeholder="Event Description"
+                   HeightRequest="120"
+                   Text="{Binding Description}" />
+
+            <Button Text="Select Event Flyer"
+                   Command="{Binding PickFlyerCommand}" />
+
+            <Label Text="{Binding PromotionFilePath}"
+                  FontSize="12"
+                  LineBreakMode="TailTruncation" />
+
+            <Button Text="{Binding SaveButtonText}"
+                Command="{Binding SaveEventCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
